@@ -1,0 +1,7 @@
+{
+  "name": "tienda-hibrida-ucompensar",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
