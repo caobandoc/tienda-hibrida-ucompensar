@@ -1,15 +1,23 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-input label="Correo" label-placement="floating" fill="outline" placeholder="ejemplo@gmail.com"
-             [(ngModel)]="email"></ion-input>
-  <div class="ion-padding-vertical">
-    <ion-input label="Contraseña" type="password" label-placement="floating" fill="outline" placeholder="Contraseña"
-               [(ngModel)]="password">
-      @if (password) {
-        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
-      }
-    </ion-input>
-  </div>
-  <ion-button expand="block">Ingresar</ion-button>
-  <br>
-  <ion-button expand="block" fill="outline">Registrarse</ion-button>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <ion-input label="Correo" label-placement="floating" fill="outline" placeholder="ejemplo@gmail.com"
+               formControlName="email"></ion-input>
+    <div class="ion-padding-vertical">
+      <ion-input label="Contraseña" type="password" label-placement="floating" fill="outline" placeholder="Contraseña"
+                 formControlName="password">
+        @if (loginForm.value.password) {
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        }
+      </ion-input>
+    </div>
+    <ion-button type="submit" expand="block">Ingresar</ion-button>
+  </form>
+
+  <ion-button expand="block" fill="outline" (click)="goToRegister()">Registrarse</ion-button>
+  <ion-toast
+    [isOpen]="isToastOpen"
+    message="{{ toastMessage }}"
+    [duration]="5000"
+    (didDismiss)="setOpen(false)"
+  ></ion-toast>
 </ion-content>

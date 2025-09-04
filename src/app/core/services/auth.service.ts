@@ -10,7 +10,7 @@ const { apiUrl } = environment;
 @Injectable({
   providedIn: 'root'
 })
-export class Auth {
+export class AuthService {
 
   private readonly url: string = `${apiUrl}/auth`;
 
