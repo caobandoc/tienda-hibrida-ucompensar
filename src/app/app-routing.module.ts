@@ -5,7 +5,7 @@ import {RegisterComponent} from "./feature/pages/register/register.component";
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   }, {
     path: 'login',
