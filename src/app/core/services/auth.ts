@@ -1,9 +1,10 @@
+
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {User, UserRegister} from "../models/User";
-import {Token} from "../models/Token";
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User, UserRegister } from '../models/User';
+import { Token } from '../models/Token';
 
 const { apiUrl } = environment;
 
@@ -11,13 +12,12 @@ const { apiUrl } = environment;
   providedIn: 'root'
 })
 export class Auth {
-
   private readonly url: string = `${apiUrl}/auth`;
 
   constructor(private readonly http: HttpClient) {}
 
-  public register(user: UserRegister): Observable<UserRegister>{
-    return this.http.post<UserRegister>(`${this.url}/register`, user);
+  public register(user: UserRegister): Observable<any> {
+    return this.http.post(`${this.url}/register`, user);
   }
 
   public login(user: User): Observable<Token> {
