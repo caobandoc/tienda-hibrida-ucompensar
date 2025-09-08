@@ -1,19 +1,23 @@
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content color="success" class="ion-padding">
+  <div class="ion-display-flex ion-flex-column ion-align-items-center">
+    <ion-icon src="/assets/storefront.svg" size="large"></ion-icon>
+    <h1 class="ion-text-center">Bienvenido a Compensar Shop</h1>
+  </div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <ion-input label="Correo" label-placement="floating" fill="outline" placeholder="ejemplo@gmail.com"
+    <ion-input class="back-black" label="Correo" label-placement="floating" fill="solid" placeholder="ejemplo@gmail.com"
                formControlName="email"></ion-input>
     <div class="ion-padding-vertical">
-      <ion-input label="Contraseña" type="password" label-placement="floating" fill="outline" placeholder="Contraseña"
+      <ion-input class="back-black" label="Contraseña" type="password" label-placement="floating" fill="solid" placeholder="Contraseña"
                  formControlName="password">
         @if (loginForm.value.password) {
           <ion-input-password-toggle slot="end"></ion-input-password-toggle>
         }
       </ion-input>
     </div>
-    <ion-button type="submit" expand="block">Ingresar</ion-button>
+    <ion-button type="submit" expand="block" [disabled]="loginForm.invalid">Ingresar</ion-button>
   </form>
 
-  <ion-button expand="block" fill="outline" (click)="goToRegister()">Registrarse</ion-button>
+  <ion-button class="back-black" expand="block" fill="outline" (click)="goToRegister()">Registrarse</ion-button>
   <ion-toast
     [isOpen]="isToastOpen"
     message="{{ toastMessage }}"

@@ -1,18 +1,23 @@
-import { Component } from '@angular/core';
-import {IonicModule} from "@ionic/angular";
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../../core/services/auth.service";
 import {TokenService} from "../../../core/services/token.service";
 import {Router} from "@angular/router";
+import {IonButton, IonContent, IonIcon, IonInput, IonInputPasswordToggle, IonToast} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   imports: [
-    IonicModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonContent,
+    IonInput,
+    IonInputPasswordToggle,
+    IonButton,
+    IonToast,
+    IonIcon
   ]
 })
 export class LoginComponent {
@@ -37,6 +42,7 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           this.tokenService.setToken(response.token);
+          this.router.navigate(['/products']);
         },
         error: (error) => {
           this.setOpen(true);

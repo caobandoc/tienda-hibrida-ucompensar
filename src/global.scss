@@ -34,4 +34,8 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+/* @import "@ionic/angular/css/palettes/dark.system.css"; */
+
+body, ion-content, ion-label, h1, h2, h3, h4, h5, h6, p, span, div {
+  color: var(--ion-color-dark) !important;
+}
