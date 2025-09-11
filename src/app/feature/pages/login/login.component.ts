@@ -41,8 +41,8 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value)
       .subscribe({
         next: (response) => {
-          this.tokenService.setToken(response.token);
-          this.router.navigate(['/products']);
+          this.tokenService.setToken(response);
+          this.router.navigate(['/shop']);
         },
         error: (error) => {
           this.setOpen(true);
