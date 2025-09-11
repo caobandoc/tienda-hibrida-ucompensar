@@ -12,10 +12,7 @@
 
 <ion-content color="success" class="ion-padding">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input formControlName="name" type="text"></ion-input>
-    </ion-item>
+    <ion-input formControlName="name" type="text" class="back-black" label="Nombre" label-placement="floating" fill="solid" placeholder="Nombre"></ion-input>
     @if (submitted && f['name'].errors) {
       <div class="error-message">
         @if (f['name'].errors['required']) {
@@ -23,37 +20,33 @@
         }
       </div>
     }
-
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input formControlName="email" type="email"></ion-input>
-    </ion-item>
-    @if (submitted && f['email'].errors) {
-      <div class="error-message">
-        @if (f['email'].errors['required']) {
-          <small>El email es requerido.</small>
-        }
-        @if (f['email'].errors['email']) {
-          <small>El email no es válido.</small>
-        }
-      </div>
-    }
-
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input formControlName="password" type="password"></ion-input>
-    </ion-item>
-    @if (submitted && f['password'].errors) {
-      <div class="error-message">
-        @if (f['password'].errors['required']) {
-          <small>La contraseña es requerida.</small>
-        }
-        @if (f['password'].errors['minlength']) {
-          <small>Mínimo 6 caracteres.</small>
-        }
-      </div>
-    }
-
+    <div class="ion-padding-vertical">
+      <ion-input type="email" class="back-black" label="Correo" label-placement="floating" fill="solid" placeholder="ejemplo@gmail.com" formControlName="email"></ion-input>
+      @if (submitted && f['email'].errors) {
+        <div class="error-message">
+          @if (f['email'].errors['required']) {
+            <small>El email es requerido.</small>
+          }
+          @if (f['email'].errors['email']) {
+            <small>El email no es válido.</small>
+          }
+        </div>
+      }
+    </div>
+    <div>
+      <ion-input type="password" class="back-black" label="Contraseña" type="password" label-placement="floating" fill="solid" placeholder="Contraseña" formControlName="password"></ion-input>
+      @if (submitted && f['password'].errors) {
+        <div class="error-message">
+          @if (f['password'].errors['required']) {
+            <small>La contraseña es requerida.</small>
+          }
+          @if (f['password'].errors['minlength']) {
+            <small>Mínimo 6 caracteres.</small>
+          }
+        </div>
+      }
+    </div>
+    <div class="ion-padding-vertical"></div>
     <ion-button expand="block" type="submit">Registrarse</ion-button>
   </form>
 </ion-content>

@@ -21,7 +21,7 @@ import {arrowBackOutline} from "ionicons/icons";
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  imports: [ReactiveFormsModule, CommonModule, IonHeader, IonToolbar, IonButton, IonTitle, IonContent, IonItem, IonInput, IonLabel, IonIcon, IonButtons],
+  imports: [ReactiveFormsModule, CommonModule, IonHeader, IonToolbar, IonButton, IonTitle, IonContent, IonInput, IonIcon, IonButtons],
 })
 export class RegisterComponent {
   registerForm: FormGroup;
