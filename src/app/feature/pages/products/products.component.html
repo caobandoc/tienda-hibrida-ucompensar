@@ -7,7 +7,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content color="success" class="ion-padding">
-  <p>
-    products works!
-  </p>
+  @for (product of products; track product.id){
+    <app-product [product]="product"></app-product>
+  }
+
+
 </ion-content>
