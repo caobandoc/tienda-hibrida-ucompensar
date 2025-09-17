@@ -1,0 +1,12 @@
+<ion-card>
+  <img alt="Silhouette of mountains" ngSrc="{{product.urlImage}}"
+  width="350" height="200" priority
+  />
+  <ion-card-header>
+    <ion-card-title>{{product.name}}</ion-card-title>
+    <ion-card-subtitle>{{ product.price | currency:'USD' }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-button>Ver</ion-button>
+  <ion-button>Agregar</ion-button>
+</ion-card>
