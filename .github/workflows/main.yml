@@ -34,9 +34,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular
+      - name: Install Ionic CLI
+        run: npm i -g @ionic/cli
+
+      - name: Build (Ionic)
         run: |
-          npx ng build --configuration production --base-href "/${REPO_NAME}/" --deploy-url "/${REPO_NAME}/"
+          # Usa ionic build --prod y añade base-href/deploy-url para GitHub Pages
+          ionic build --prod -- --base-href "/${REPO_NAME}/" --deploy-url "/${REPO_NAME}/"
+          # Si diera error con --prod en tu entorno, usa la línea alternativa:
+          # ionic build -- --configuration production --base-href "/${REPO_NAME}/" --deploy-url "/${REPO_NAME}/"
 
       - name: SPA fallback (404.html)
         run: |
