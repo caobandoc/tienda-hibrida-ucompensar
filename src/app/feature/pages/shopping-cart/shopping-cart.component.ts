@@ -35,9 +35,24 @@ export class ShoppingCartComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.cartProducts = this.shoppingCartService.cartProducts$.subscribe(ids => {
-      this.products = [];
-      this.total = 0;
-      ids.forEach(id => {
+      // Si el carrito está vacío, limpiar la lista de productos y total
+      if (ids.length === 0) {
+        this.products = [];
+        this.total = 0;
+      }
+
+      // Recuperar los id actuales del carrito
+      const currentIds = this.products.map(p => p.id);
+      // revisar nuevos ids
+      const newIds = ids.filter(id => !currentIds.includes(id));
+      // revisar ids eliminados
+      const removedIds = currentIds.filter(id => !ids.includes(id));
+
+      // Eliminar productos que ya no están en el carrito
+      this.products = this.products.filter(p => !removedIds.includes(p.id));
+      this.total = this.products.reduce((sum, p) => sum + p.price, 0);
+      // Agregar nuevos productos al carrito
+      newIds.forEach(id => {
         this.productService.getProduct(id).subscribe(product => {
           this.products.push(product);
           this.total += product.price;
