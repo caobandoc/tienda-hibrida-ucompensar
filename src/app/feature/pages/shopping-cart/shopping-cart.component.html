@@ -1,0 +1,27 @@
+<ion-header>
+  <app-toolbar [isProductPage]="false"></app-toolbar>
+</ion-header>
+<ion-content color="success">
+  @if(products.length === 0){
+    <div class="cart-empty-message ion-padding ion-text-center">
+      No has agregado productos al carrito
+    </div>
+  }
+  @else{
+    @for (product of products; track product.id){
+    <app-product-cart [product]="product"></app-product-cart>
+    }
+  }
+
+</ion-content>
+<ion-footer>
+  <div class="cart-footer">
+    <div class="cart-footer__total">
+      <span class="cart-footer__label"><b>Total:</b></span>
+      <span class="cart-footer__amount">{{ total | currency:'USD' }}</span>
+    </div>
+    <ion-button expand="block" color="primary" class="cart-footer__buy" [disabled]="products.length === 0">
+      Comprar
+    </ion-button>
+  </div>
+</ion-footer>

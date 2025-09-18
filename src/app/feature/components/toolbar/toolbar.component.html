@@ -1,0 +1,21 @@
+<ion-toolbar color="secondary">
+  @if (isProductPage){
+    <ion-buttons slot="start" (click)="deleteToken()">
+      <ion-button fill="solid" color="primary">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Salir
+      </ion-button>
+    </ion-buttons>
+  } @else {
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Volver</ion-title>
+  }
+  <ion-buttons slot="end">
+    <ion-button fill="solid" (click)="toShoppingCart()" color="primary">
+      <ion-icon slot="end" name="cart-outline"></ion-icon>
+      <ion-badge color="danger">{{ cartCount }}</ion-badge>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

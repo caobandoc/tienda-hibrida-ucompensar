@@ -1,0 +1,14 @@
+<div class="product-cart ion-margin">
+  <img class="product-cart__image" alt="Silhouette of mountains" ngSrc="{{product.urlImage}}"
+  width="81" height="81" priority
+  />
+  <div class="product-cart__info">
+    <div class="product-cart__details">
+      <span class="product-cart__name">{{ product.name }}</span>
+      <ion-button size="small" color="danger" (click)="deleteProduct(product.id)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </div>
+    <span class="product-cart__price">{{ product.price | currency:'USD' }}</span>
+  </div>
+</div>

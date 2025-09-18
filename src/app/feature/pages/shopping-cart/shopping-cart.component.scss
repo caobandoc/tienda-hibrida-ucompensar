@@ -1,0 +1,32 @@
+.cart-footer {
+  background: var(--ion-color-secondary);
+  padding: 18px 16px;
+}
+
+.cart-footer__total {
+  background: #f7f7f7;
+  border-radius: 6px;
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cart-footer__label {
+  font-size: 1.1rem;
+  color: #263238;
+}
+
+.cart-footer__amount {
+  font-size: 1.1rem;
+  color: var(--ion-color-secondary);
+  font-weight: 500;
+}
+
+.cart-footer__buy {
+  background: var(--ion-color-tertiary);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 6px;
+}

@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Product} from "../../../core/models/Product";
 import {IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle} from "@ionic/angular/standalone";
 import {CurrencyPipe, NgOptimizedImage} from "@angular/common";
+import { ShoppingCartService } from '../../../core/services/shopping-cart.service';
 
 @Component({
   selector: 'app-product',
@@ -22,6 +23,12 @@ export class ProductComponent {
   // @ts-ignore
   @Input() product: Product;
 
-  constructor() { }
+  constructor(
+    private readonly shoppingCartService: ShoppingCartService
+  ) { }
+
+  addToCart(productId: number) {
+    this.shoppingCartService.addProduct(productId);
+  }
 
 }
