@@ -3,16 +3,16 @@
 </ion-header>
 <ion-content color="success">
   @if(products.length === 0){
-    <div class="cart-empty-message ion-padding ion-text-center">
-      No has agregado productos al carrito
-    </div>
+  <div class="cart-empty-message ion-padding ion-text-center">
+    No has agregado productos al carrito
+  </div>
   }
   @else{
-    @for (product of products; track product.id){
-    <app-product-cart [product]="product"></app-product-cart>
-    }
+  @for (product of products; track product.id){
+  <app-product-cart [product]="product"></app-product-cart>
   }
-
+  }
+  <ion-toast [isOpen]="isToastOpen" message="Su compra ha sido confirmada" [duration]="5000"></ion-toast>
 </ion-content>
 <ion-footer>
   <div class="cart-footer">
@@ -20,8 +20,29 @@
       <span class="cart-footer__label"><b>Total:</b></span>
       <span class="cart-footer__amount">{{ total | currency:'USD' }}</span>
     </div>
-    <ion-button expand="block" color="primary" class="cart-footer__buy" [disabled]="products.length === 0">
+    <ion-button expand="block" color="primary" class="cart-footer__buy" [disabled]="products.length === 0"
+      (click)="showCameraModal = true">
       Comprar
     </ion-button>
+
+    <ion-modal [isOpen]="showCameraModal">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Confirmar compra</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <div>
+            <p>Para confirmar la compra, por favor asegurate de que se vean todos los productos en la foto.</p>
+            <p>¿Deseas abrir la cámara ahora?</p>
+          </div>
+          <div class="ion-margin-top ion-text-right">
+            <ion-button (click)="cancel()" color="medium">Cancelar</ion-button>
+            <ion-button (click)="confirm()" color="primary">Aceptar</ion-button>
+          </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   </div>
 </ion-footer>

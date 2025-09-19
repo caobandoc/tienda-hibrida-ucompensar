@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ShoppingCartService {
 
+
   listIdProducts: number[] = [];
   private readonly cartProductsSubject = new BehaviorSubject<number[]>([]);
   cartProducts$ = this.cartProductsSubject.asObservable();
@@ -23,6 +24,11 @@ export class ShoppingCartService {
     if (this.listIdProducts.length !== prev) {
       this.cartProductsSubject.next([...this.listIdProducts]);
     }
+  }
+
+  clearCart() {
+    this.listIdProducts = [];
+    this.cartProductsSubject.next([...this.listIdProducts]);
   }
 
 }
