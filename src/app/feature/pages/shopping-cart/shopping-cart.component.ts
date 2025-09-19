@@ -6,7 +6,9 @@ import {
   IonButton,
   IonModal,
   IonToolbar,
-  IonTitle, IonToast } from '@ionic/angular/standalone';
+  IonTitle,
+  IonToast,
+} from '@ionic/angular/standalone';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { Product } from 'src/app/core/models/Product';
 import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service';
@@ -20,7 +22,8 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss'],
-  imports: [IonToast,
+  imports: [
+    IonToast,
     IonTitle,
     IonToolbar,
     IonModal,
@@ -89,9 +92,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   async confirm() {
-  this.showCameraModal = false;
-  await this.openCamera();
-}
+    this.showCameraModal = false;
+    await this.openCamera();
+  }
 
   async openCamera() {
     const image = await Camera.getPhoto({
@@ -100,7 +103,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       resultType: CameraResultType.Base64,
       source: CameraSource.Camera,
     });
-    // Aquí puedes manejar la imagen, por ejemplo guardarla o mostrarla
     console.log('Imagen capturada:', image);
     this.setOpen(true);
     // Limpiar el carrito después de la compra
