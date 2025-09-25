@@ -76,6 +76,7 @@ export class RegisterComponent {
       error: (error) => {
         this.registerForm.patchValue({password: ''});
         this.presentToast('Error en el registro. Correo ya existe!', 'danger');
+        console.error('Error en el registro:', error);
       }
     });
   }
